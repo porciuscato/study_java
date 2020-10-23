@@ -12,5 +12,11 @@ public class ArrayLotto{
     
     System.out.println("\n" + arrays.length);
     System.out.println(arrays);
+    
+    if (args.length > 0){
+      for (String arg: args){
+        System.out.println(arg);
+        }
+      }
     }
   }
