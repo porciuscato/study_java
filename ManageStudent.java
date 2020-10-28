@@ -16,7 +16,7 @@ public class ManageStudent{
   public static void printStudents(Student[] students){
     for(Student student:students) {
       System.out.println(student);
-//      System.out.println(student.name +  " " + student.address + " " + student.phone + " " + student.email);
+    //  System.out.println(student.name +  " " + student.address + " " + student.phone + " " + student.email);
       }
     }
   }
