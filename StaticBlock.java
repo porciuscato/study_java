@@ -13,5 +13,5 @@ public class StaticBlock{
     }
   public static int getData(){
     return data;
-    }
+    } 
 }
