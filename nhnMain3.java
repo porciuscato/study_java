@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 class Main {
   private static void solution(int numOfOrder, String[] orderArr) {
-    // TODO: ÀÌ°÷¿¡ ÄÚµå¸¦ ÀÛ¼ºÇÏ¼¼¿ä. Ãß°¡·Î ÇÊ¿äÇÑ ÇÔ¼ö¿Í Àü¿ªº¯¼ö¸¦ ¼±¾ðÇØ¼­ »ç¿ëÇÏ¼Åµµ µË´Ï´Ù.
+    // TODO: ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½Úµå¸¦ ï¿½Û¼ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½. ï¿½ß°ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¼Åµï¿½ ï¿½Ë´Ï´ï¿½.
 		
 		String answer = "";
 		answer += "hello";
@@ -11,10 +11,10 @@ class Main {
 		
 		for(int i = 0; i < numOfOrder; i++){
 			for(int j = 0; j < orderArr[i].length(); j++){
-				System.out.println(orderArr[i].charAt(j));
+        System.out.println(orderArr[i].charAt(j));
 			}
 		}
-	}
+	// }
 
   private static class InputData {
     int numOfOrder;
