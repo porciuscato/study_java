@@ -36,3 +36,8 @@ hs_err_pid*
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/java,vscode
+/.metadata/
+
+.vscode/
+.classpath
+.project

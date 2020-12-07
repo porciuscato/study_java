@@ -222,3 +222,6 @@ public class AccessModifier {
 | private         | O           |             |                  |                  |
 
 \+ 주의사항! 클래스도 이와 같이 적용된다. 다만, 한 java 파일 안에는 오직 파일 이름과 동일한 클래스만이 public 접근 제어자를 가질 수 있다.
+
+## 상속
+
