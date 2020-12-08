@@ -15,6 +15,15 @@ javac CLASSNAME.java
 java CLASSNAME
 ```
 
+패키지 단위로 컴파일을 시행할 땐, 패키지 파일이 있는 곳에서부터 컴파일을 실행해야 한다. 가령 c 패키지의 cc 패키지 안에 있는 Car 클래스를 컴파일하고 실행하기 위해선 다음과 같이 작성한다.
+
+```bash
+javac c/cc/Car.java
+java c/cc/Car
+```
+
+
+
 ## 자바 기본 구조
 
 ```java
