@@ -303,7 +303,7 @@ public class ChildArg extends ParentArg {
 - 자식 타입의 객체를 부모 타입으로 형 변환하는 것은 자동으로 된다.
 
   ```java
-  // 아래는 가능하다. Child가 자동으로 Parent로 형변환되기 때문이다. 하지만 Child 객체가 아닌 Parent 객체가 되기 때문에 parent를 Child 객체로 형변환하는 것은 불가능하다.
+  // 아래는 가능하다. parent 변수는 겉으로 보기에 Parent 타입이지만 실제로는 Child 타입이다. 그렇기에 Child의 메소드를 호출할 수 있다.
   Parent parent = new Child();
   ```
 
@@ -332,4 +332,42 @@ public class ChildArg extends ParentArg {
   parent[1] = new Parent();
   ```
 
-  
+  ## 다형성 Polymorphism
+
+  - 형 변환을 하더라도, 실제 호출되는 것은 원래 객체에 있는 메소드가 호출된다.
+
+    ```java
+    package c.inheritance;
+    
+    public class InheritancePoly {
+        public static void main(String[] args) {
+            InheritancePoly inheritance = new InheritancePoly();
+            inheritance.callPrintName();
+        }
+        private void callPrintName() {
+            Parent parent1 = new Parent();
+            parent1.printName();
+            Parent parent2 = new Child();
+            parent2.printName();
+            Parent parent3 = new ChildOther();
+            parent3.printName();
+        }
+    }
+    ```
+
+    ```
+    위 코드는 다음과 같은 결과를 낸다.
+    Parent Constructor
+    Parent printName()
+    
+    Parent Constructor
+    Child Constructor
+    Parent printName()
+    
+    Parent Constructor
+    Childother Constructor
+    ChildOther - printName()
+    ```
+
+    > 즉 변수를 새로 생성할 때 변수의 이름과 함께 선언한 타입이 무엇이든 실제 생성하는 클래스로 변수의 타입이 결정된다. 위에서는 Parent로 다 명시했지만 실제로는 우항의 타입으로 객체가 생성되었다.
+
