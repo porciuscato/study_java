@@ -234,3 +234,64 @@ public class AccessModifier {
 
 ## 상속
 
+상속을 정리하면 다음과 같다.
+
+- 부모 클래스에서는 기본 생성자를 만들어 놓는 것 이외에는 상속을 위해서 아무런 작업을 할 필요는 없다.
+
+- 자식 클래스는 클래스 선언시 extends 다음에 부모 클래스 이름을 적어준다. 다만, 단일 상속만이 가능하다.  즉 extends 뒤에는 하나의 클래스만 올 수 있다.
+
+- 자식 클래스의 생성자가 호출되면, 자동으로 부모 클래스의 매개 변수 없는 생성자가 실행된다.
+  > 매개 변수가 있는 생성자를 만들었을 경우에는 기본 생성자는 자동으로 만들어지지 않는다. 이러한 경우 해결할 수 있는 방법은 2가지다.
+  >
+  > - 부모 클래스에 "매개 변수가 없는 " 기본 생성자를 만든다.
+  > - 자식 클래스에서 부모 클래스의
+
+- 자식 클래스에서는 부모 클래스에 있는 public, protected 로 선언된 모든 인스턴스 및 클래스 변수와 메소드를 사용할 수 있다.
+
+```java
+// 부모 클래스
+package c.inheritance;
+
+public class ParentArg {
+    public ParentArg(String name) {
+        System.out.println("ParentArg(" + name + ") Constructor");
+    }
+    public ParentArg(int num) {
+        System.out.println("ParentArg(int " + num + ") Constructor");
+    }
+}
+```
+
+```java
+// 자식 클래스
+package c.inheritance;
+
+public class ChildArg extends ParentArg {
+    public ChildArg() {
+        super(3);
+        System.out.println("ChildArg Constructor");
+    }
+}
+```
+
+- super() 함수의 매개 변수를 통해 상속하는 클래스 중 매개변수가 일치하는 생성자를 호출한다.
+> super("what") 이라 하면 매개변수가 String인 생성자를 호출한다.
+> \+ 추가로, super()는 반드시 생성자의 맨 첫 줄에 와야 한다.
+
+## 메소드 오버라이딩
+
+자식 클래스에서 부모 클래스에 있는 메소드와 동일하게 선언하는 것을 메소드 오버라이딩이라고 한다. 접근 제어자, 리턴 타입, 메소드 이름, 매개 변수 타입 및 개수가 모두 같아야 메소드 오버라이딩이라 부른다.
+
+메소드 overriding에 대해 정리하자.
+
+- 메소드 overriding은 부모 클래스의 메소드와 동일한 시그니처(메소드 이름, 매개 변수의 타입 및 개수)를 갖는 자식 클래스의 메소드가 존재할 때 성립된다.
+
+- Overriding된 메소드는 부모 클래스와 동일한 리턴 타입을 가져야만 한다.
+
+- Overriding된 메소드의 접근 제어자는 부모 클래스에 있는 메소드와 달라도 되지만, 접근 권한이 확장되는 경우에만 허용된다. 접근 권한이 축소될 경우에는 컴파일 에러가 발생한다.
+
+  > public > protected > package-private > private
+
+
+
+\+ 메소드 오버로딩은 같은 함수들을 매개변수만 다르게 하여 확장하는 것을 의미한다. 반면 메소드 오버로딩은 함수 덮어쓰기다.
