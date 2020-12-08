@@ -295,3 +295,41 @@ public class ChildArg extends ParentArg {
 
 
 \+ 메소드 오버로딩은 같은 함수들을 매개변수만 다르게 하여 확장하는 것을 의미한다. 반면 메소드 오버로딩은 함수 덮어쓰기다.
+
+## 참조 자료형의 형 변환
+
+- 참조 자료형도 형 변환이 가능하다.
+
+- 자식 타입의 객체를 부모 타입으로 형 변환하는 것은 자동으로 된다.
+
+  ```java
+  // 아래는 가능하다. Child가 자동으로 Parent로 형변환되기 때문이다. 하지만 Child 객체가 아닌 Parent 객체가 되기 때문에 parent를 Child 객체로 형변환하는 것은 불가능하다.
+  Parent parent = new Child();
+  ```
+
+  ```java
+  // 아래는 불가능하다. 부모 타입은 자식 타입으로 형변환하기 위해선 명시적으로 타입을 지정해야 하기 때문이다.
+  Child child = new Parent();
+  ```
+
+  ``` java
+  Parent parent = new Parent();
+  Child child = (Child)parent;
+  // 이처럼 부모 타입의 객체를 강제적으로 형 변환하여 자식 타입의 객체로 만들면 컴파일에는 문제가 없으나 실행이 되지 않는다.
+  ```
+
+- 부모 타입의 객체를 자식 타입으로 형 변환을 할 때에는 명시적으로 타입을 지정해 주어야 한다. 이때, 부모 타입의 실체 객체는 자식 타입이어야 한다.
+
+- instanceof 예약어를 사용하면 객체의 타입을 확인할 수 있다.
+
+- instanceof로 타입 확인을 할 떄 부모 타입도 true라는 결과를 제공한다.
+
+- 부모와 자식 타입의 클래스를 함께 배열로 선언할 땐, 배열을 부모 타입으로 지정해야 한다.
+
+  ```java
+  Parent[] parent = new Parent[2];
+  parent[0] = new Child();
+  parent[1] = new Parent();
+  ```
+
+  
