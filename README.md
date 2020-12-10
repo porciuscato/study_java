@@ -387,3 +387,7 @@ public class ChildArg extends ParentArg {
 #### static final은 클래스 상수다.
 
 - static final 상수: 선언시 값이 초기화되어야 하며, 한 번 정해지면 객체 생성 여부와 관련없이 늘 같은 값을 지니는 클래스 상수다.
+
+## Object 클래스
+
+java에서 클래스를 선언할 때 아무 클래스도 상속하지 않는다면 자동으로 java.lang.Object 클래스를 상속한다.
