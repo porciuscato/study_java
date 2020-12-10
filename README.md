@@ -362,12 +362,28 @@ public class ChildArg extends ParentArg {
     
     Parent Constructor
     Child Constructor
-    Parent printName()
+    Child printName()
     
     Parent Constructor
     Childother Constructor
     ChildOther - printName()
     ```
 
-    > 즉 변수를 새로 생성할 때 변수의 이름과 함께 선언한 타입이 무엇이든 실제 생성하는 클래스로 변수의 타입이 결정된다. 위에서는 Parent로 다 명시했지만 실제로는 우항의 타입으로 객체가 생성되었다.
+    > 즉 변수를 새로 생성할 때 변수의 이름과 함께 선언한 타입이 무엇이든 실제 생성하는 클래스로 변수의 타입이 결정된다. 위에서는 Parent로 다 명시했지만 실제로는 우항의 타입으로 객체가 생성되었다. 그렇기에 printName 메소드를 호출하면 오버라이딩된 메소드가 출력된다. 하지만 Child 클래스로 생성되었을 지라도 Parent의 형으로 강제했기 때문에 Parent 클래스에 없는 Child 클래스 고유의 메소드는 호출할 수 없다.
 
+## Static Final
+
+#### static은 변수와 메소드에 쓰일 수 있다.
+
+- static 변수: 클래스 변수
+- static 메소드: 객체 생성 없이 호출이 가능한 함수
+
+#### final은 상수, 메소드, 클래스 3가지 경우에 쓰인다.
+
+- final 상수: 한 번 값이 정해지면 고칠 수 없는 값이 된다.
+- final 메소드: 오버라이딩이 불가능하다.
+- final 클래스: 상속을 할 수 없다.
+
+#### static final은 클래스 상수다.
+
+- static final 상수: 선언시 값이 초기화되어야 하며, 한 번 정해지면 객체 생성 여부와 관련없이 늘 같은 값을 지니는 클래스 상수다.

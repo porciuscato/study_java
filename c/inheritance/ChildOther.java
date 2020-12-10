@@ -5,6 +5,6 @@ public class ChildOther extends Parent {
         System.out.println("Childother Constructor");
     }
     public void printName() {
-        System.out.println("ChildOther - printName()");
+        System.out.println("ChildOther printName()");
     }
 }
