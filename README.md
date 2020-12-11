@@ -410,3 +410,25 @@ java에서 클래스를 선언할 때 아무 클래스도 상속하지 않는다
 3. 타동적transitive: null이 아닌 x, y, z가 있을 때 x.equals(y)가 true를 리턴하고, y.equals(z)가 true를 리턴하면, x.equals(z)는 반드시 true를 리턴해야 한다.
 4. 일관consistent. null이 아닌 x와 y가 있을 떄 객체가 변경되지 않은 상황에서는 몇 번을 호출하더라도, x.eqauls(y)의 결과는 항상 true이거나 항상 false여야만 한다.
 5. null과의 비교: null이 아닌 x라는 객체의 x.equals(null) 결과는 항상 false여야만 한다.
+
+## Interface vs Abstract Class vs Concrete Class
+
+abstract 클래스를 정리해보자.
+
+- abstract 클래스는 클래스 선언시 abstrat이라는 예약어가 클래스 앞에 추가되면 된다.
+- abstract 클래스 안에는 abstract로 선언된 메소드가 0개 이상 있으면 된다.
+- abstract으로 선언된 메소드가 하나라도 있으면 그 클래스는 반드시 abstract로 선언되어야만 한다.
+- abstract 클래스는 몸통이 있는 메소드가 0개 이상 있어도 전혀 상관 없으며, static이나 final 메소드가 있어도 된다. (반면 인터페이스는 static, final 메소드가 선언되어 있으면 안 된다.)
+
+인터페이스와 추상 클래스, 일반 클래스를 비교하면 다음과 같다.
+
+|                                  | 인터페이스 | 추상 클래스    | 클래스     |
+| -------------------------------- | ---------- | -------------- | ---------- |
+| 선언시 예약어                    | interface  | abstract class | class      |
+| 구현 안 된 메소드 포함 가능 여부 | 가능(필수) | 가능           | 불가       |
+| 구현된 메소드 포함 가능 여부     | 불가       | 가능           | 가능(필수) |
+| static 메소드 선언 가능 여부     | 불가       | 가능           | 가능       |
+| final 메소드 선언 가능 여부      | 불가       | 가능           | 가능       |
+| extends 가능                     | 불가       | 가능           | 가능       |
+| implements 가능                  | 가능       | 불가           | 불가       |
+
