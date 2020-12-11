@@ -373,21 +373,31 @@ public class ChildArg extends ParentArg {
 
 ## Static Final
 
-#### static은 변수와 메소드에 쓰일 수 있다.
+<strong>static은 변수와 메소드에 쓰일 수 있다.</strong>
 
 - static 변수: 클래스 변수
 - static 메소드: 객체 생성 없이 호출이 가능한 함수
 
-#### final은 상수, 메소드, 클래스 3가지 경우에 쓰인다.
+<strong>final은 상수, 메소드, 클래스 3가지 경우에 쓰인다.</strong>
 
 - final 상수: 한 번 값이 정해지면 고칠 수 없는 값이 된다.
 - final 메소드: 오버라이딩이 불가능하다.
 - final 클래스: 상속을 할 수 없다.
 
-#### static final은 클래스 상수다.
+<strong>static final은 클래스 상수다.</strong>
 
 - static final 상수: 선언시 값이 초기화되어야 하며, 한 번 정해지면 객체 생성 여부와 관련없이 늘 같은 값을 지니는 클래스 상수다.
 
 ## Object 클래스
 
 java에서 클래스를 선언할 때 아무 클래스도 상속하지 않는다면 자동으로 java.lang.Object 클래스를 상속한다.
+
+## AWT, Swing을 사용해 윈도우 어플리케이션 만들기
+
+문서
+
+- https://www.javatpoint.com/java-jframe
+- https://docs.oracle.com/en/java/javase/11/docs/api/java.desktop/javax/swing/JFrame.html
+
+소스를 완성한 뒤, exe 파일로 만들기 위해 먼저 소스를 jar 파일로 만든다. 만들어진 jar 파일을 exe로 만들어주는 Launch4j 프로그램을 다운 받아 exe 파일을 생성한다. 자세한 내용은 [링크](https://www.genuinecoder.com/convert-java-jar-to-exe/)를 참고한다.
+
