@@ -378,13 +378,16 @@ public class ChildArg extends ParentArg {
 - static 변수: 클래스 변수
 - static 메소드: 객체 생성 없이 호출이 가능한 함수
 
-<strong>final은 상수, 메소드, 클래스 3가지 경우에 쓰인다.</strong>
+<strong>final은 변수, 메소드, 클래스 3가지 경우에 쓰인다.</strong>
 
-- final 상수: 한 번 값이 정해지면 고칠 수 없는 값이 된다.
+- final 변수: 한 번 값이 정해지면 고칠 수 없는 값인 상수가 된다.
+  - 고로 final은 선언과 초기화가 동시에 이뤄져야 한다.
+  - 반면 매개변수, 지역변수의 final은 초기화가 선언과 함께 되지 않아도 된다.
+  - 클래스로 객체를 생성할 때 final로 객체를 만들어도, 그 안의 인스턴스 혹은 클래스 변수들은 final이 아니라면 재할당이 가능하다.
 - final 메소드: 오버라이딩이 불가능하다.
 - final 클래스: 상속을 할 수 없다.
 
-<strong>static final은 클래스 상수다.</strong>
+<strong>static final 변수는 클래스 상수다.</strong>
 
 - static final 상수: 선언시 값이 초기화되어야 하며, 한 번 정해지면 객체 생성 여부와 관련없이 늘 같은 값을 지니는 클래스 상수다.
 
@@ -431,4 +434,97 @@ abstract 클래스를 정리해보자.
 | final 메소드 선언 가능 여부      | 불가       | 가능           | 가능       |
 | extends 가능                     | 불가       | 가능           | 가능       |
 | implements 가능                  | 가능       | 불가           | 불가       |
+
+## enum 클래스
+
+- enumeration, 즉 셈, 계산, 열거, 목록, 일람표를 나타나는 말로써 `열거형 클래스`라고도 불린다. 
+- enum 클래스에 있는 상수들은 타입과 값을 지정할 필요가 없다.
+
+```java
+package c.enums;
+
+public enum OverTimeValues {
+    THREE_HOUR,
+    FIVE_HOUR;
+}
+```
+
+이처럼 타입이나 값을 표시하지 않고도 아래와 같이 활용이 가능하다.
+
+```java
+package c.enums;
+
+public class OverTimeManager {
+    public int getOverTimeAmount(OverTimeValues value) {
+        int amount = 0;
+        System.out.println(value);
+        switch(value){
+            case THREE_HOUR:
+                amount = 18000;
+                break;
+            case FIVE_HOUR:
+                amount = 30000;
+                break;
+            default:
+                break;
+        }
+        return amount;
+    }
+    public static void main(String[] args) {
+        OverTimeManager manager = new OverTimeManager();
+        int myAmount = manager.getOverTimeAmount(OverTimeValues.THREE_HOUR);
+        System.out.println(myAmount);
+    }
+}
+
+```
+
+
+
+- enum 클래스에 값을 지정할 수도 있다.
+
+  ```java
+  package c.enums;
+  
+  public enum OverTimeValues2 {
+      THREE_HOUR(18000),
+      FIVE_HOUR(30000);
+      
+      private final int amount;
+  
+      OverTimeValues2(int amount) {  // 생성자는 package-private과 private만 가능
+          this.amount = amount;
+      }
+      public int getAmount() {
+          return amount;
+      }
+  }
+  ```
+
+  결과를 확인하자.
+
+  ```java
+  package c.enums;
+  
+  public class OverTimeManager2 {
+      public static void main(String[] args) {
+          OverTimeValues2 value = OverTimeValues2.THREE_HOUR;
+          System.out.println(value);  // THREE_HOUR
+          System.out.println(value.getAmount());  // 18000
+      }
+  }
+  ```
+
+- enum 클래스는 java.lang.Enum 클래스만을 상속 받아야 한다.
+
+- enum 클래스의 API에 없는 values() 메소드는 클래스 내 모든 상수들을 반환한다.
+
+  ```java
+  OverTimeValues [] values = OverTimeValues.values();
+  for(OverTimeValues value: values) {
+      System.out.println(value);
+  }
+  ```
+
+  
 

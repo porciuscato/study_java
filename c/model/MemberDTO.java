@@ -45,6 +45,7 @@ public class MemberDTO {
         return true;
     }
 
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -52,5 +53,10 @@ public class MemberDTO {
         result = prime * result + ((name == null) ? 0 : email.hashCode());
         result = prime * result + ((phone == null) ? 0 : email.hashCode());
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + name + ", phone: " + phone + ", email: " + email;
     }
 }
