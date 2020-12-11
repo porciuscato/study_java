@@ -401,3 +401,12 @@ java에서 클래스를 선언할 때 아무 클래스도 상속하지 않는다
 
 소스를 완성한 뒤, exe 파일로 만들기 위해 먼저 소스를 jar 파일로 만든다. 만들어진 jar 파일을 exe로 만들어주는 Launch4j 프로그램을 다운 받아 exe 파일을 생성한다. 자세한 내용은 [링크](https://www.genuinecoder.com/convert-java-jar-to-exe/)를 참고한다.
 
+## equals()
+
+두 객체가 같은 객체인지 확인하기 위해선 java.lang.Object에 정의된 equals() 메소드를 오버로드 함으로써 가능하다. equals() 메소드는 두 객체의 주소값이 완전히 같을 경우, true를 반환한다. 하지만 평소 개발을 할 땐 주소값이 다르더라도 같은 값을 가진 객체들을 같다고 판단하는 경우가 있기에 이를 위해 equals 메소드를 오버로딩하는 것이다. 이때 반드시 만족시켜야하는 5가지 조건이 있다.
+
+1. 재귀reflexive: null이 아닌 x라는 객체의 x.equals(x) 결과는 항상 true여야만 한다.
+2. 대칭symmetric: null이 아닌 x와 y 객체가 있을 때, y.equals(x)가 true를 리턴했다면 x.equals(y)도 반드시 true를 리턴해야 한다.
+3. 타동적transitive: null이 아닌 x, y, z가 있을 때 x.equals(y)가 true를 리턴하고, y.equals(z)가 true를 리턴하면, x.equals(z)는 반드시 true를 리턴해야 한다.
+4. 일관consistent. null이 아닌 x와 y가 있을 떄 객체가 변경되지 않은 상황에서는 몇 번을 호출하더라도, x.eqauls(y)의 결과는 항상 true이거나 항상 false여야만 한다.
+5. null과의 비교: null이 아닌 x라는 객체의 x.equals(null) 결과는 항상 false여야만 한다.
