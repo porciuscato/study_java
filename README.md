@@ -528,3 +528,68 @@ public class OverTimeManager {
 
   
 
+## 예외 처리
+
+- try-catch 블록으로 처리한다. 그러나 지역변수는 사용될 수 없으므로 사용해야될 중요한 변수가 있다면 try-catch 블록 밖에 정의하자.
+
+  ```java
+  public void function() {
+      int[] intArray = new int[5];
+      try {
+          System.out.println(intArray[5]);
+      } catch (Exception e) {
+          System.out.println(intArray.length);
+      } finally {
+          System.out.println("Here is finally.");
+      }
+      System.out.println("This code must run.");
+  }
+  ```
+
+- catch는 여러 개를 사용해도 상관 없으나 Exception 클래스는 가장 마지막에 사용하도록 하자. 예외처리의 순서는 매우 중요하다.
+
+  ```java
+  public void multiCatchThreeWithNull() {
+      int[] intArray = new int[5];
+      try {
+          intArray = null;
+          System.out.println(intArray[5]);
+      } catch (NullPointerException e) {
+          System.out.println("NullPointerException");
+      } catch (ArrayIndexOutOfBoundsException e) {
+          System.out.println("ArrayIndexOutOfBoundsException occured");
+      } catch (Exception e) {
+          System.out.println(intArray.length);
+      }
+  }
+  ```
+
+여기서 내용을 한 번 정리하자.
+
+- try 다음에 오는 catch 블록은 1개 이상 올 수 있다.
+- 먼저 선언한 catch 블록의 예외 클래스가 다음에 선언한 catch 블록의 부모에 속하면, 자식에 속하는 catch 블록은 절대 실행될 일이 없으므로 컴파일이 되지 않는다.
+- 하나의 try 블록에서 예외가 발생하면 그 예외와 관련이 있는 catch 블록을 찾아서 실행한다.
+- catch 블록 중 발생한 예외와 관련 있는 블록이 없으면, 예외가 발생하면서 해당 쓰레드는 끝난다. 따라서 마지막 catch 블록에는 Exception 클래스로 묶어주는 버릇을 들여야 안전한 프로그램을 만들 수 있다.
+
+## 예외의 종류
+
+자바의 예외는 3가지다. 
+
+- checked exception
+- error
+- runtime exception 혹은 unchecked exception
+
+&nbsp;error와 exception의 가장 큰 차이는 발생 위치가 프로그램 밖, 안 발생 여부다. error는 프로그램을 멈춰버린다. 즉 error는 프로세스에 영향을 주고 exception은 쓰레드에만 영향을 준다.
+
+&nbsp;runtime exception은 예외가 발생할 것을 미리 감지하지 못했을 때 발생한다. 모든 예외들은 runtime exception을 확장한 예외들이다. 컴파일은 되지만 실행시 예외가 발생한다. 그래서 런타임 예외라 부른다. 또한 컴파일시 체크를 하지 않기에 unchecked exception이라고도 부른다.
+
+예외 클래스 구조를 정리하면 다음과 같다.
+
+```
+- Throwable
+	- Error
+	- Exception
+		- RuntimeException (== unchecked exception)
+		- checked exception (에러와 런타임 예외가 아닌 모든 예외들)
+```
+
