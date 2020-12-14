@@ -593,3 +593,14 @@ public class OverTimeManager {
 		- checked exception (에러와 런타임 예외가 아닌 모든 예외들)
 ```
 
+## Throwable 클래스의 메소드를 Exception 클래스에서 오버라이딩한 대표적인 메소드 3가지
+
+- getMessage() : 예외 메시지를 string 형태로 받는다.
+- toString() : getMessage() 보다 자세하게, 예외 클래스 이름도 같이 받는다.
+- printStackTrace() : 예외가 발생한 메소드의 호출관계도 표시한다.
+
+## Throws와 Throw 정리
+
+- 메소드를 선언할 때 매개 변수 소괄호 뒤에 throws라는 예약어를 적은 뒤 예외를 선언하면, 해당 메소드에서 선언한 예외가 발생했을 때 호출한 메소드로 예외가 전달된다. 만약 메소드에서 두 가지 이상의 예외를 던질 수 있다면, implements처럼 콤마로 구분하여 예외 클래스 이름을 적어주면 된다.
+- try 블록 내에서 예외를 발생시킬 경우에는 throw라는 예약어를 적어 준 뒤 예외 객체를 생성하거나, 생성되어있는 객체를 명시해준다. throw한 예외 클래스가 catch 블록에 선언되어 있지 않거나, throws 선언에 포함되어 있지 않으면 컴파일 엘러가 발생한다.
+- catch 블록에서 예외를 throw할 경우에도 메소드 선언의 throws 구문에 해당 예외가 정의되어 있어야만 한다.
