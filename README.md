@@ -613,3 +613,51 @@ public class OverTimeManager {
 - 메소드를 선언할 때 매개 변수 소괄호 뒤에 throws라는 예약어를 적은 뒤 예외를 선언하면, 해당 메소드에서 선언한 예외가 발생했을 때 호출한 메소드로 예외가 전달된다. 만약 메소드에서 두 가지 이상의 예외를 던질 수 있다면, implements처럼 콤마로 구분하여 예외 클래스 이름을 적어주면 된다.
 - try 블록 내에서 예외를 발생시킬 경우에는 throw라는 예약어를 적어 준 뒤 예외 객체를 생성하거나, 생성되어있는 객체를 명시해준다. throw한 예외 클래스가 catch 블록에 선언되어 있지 않거나, throws 선언에 포함되어 있지 않으면 컴파일 엘러가 발생한다.
 - catch 블록에서 예외를 throw할 경우에도 메소드 선언의 throws 구문에 해당 예외가 정의되어 있어야만 한다.
+
+
+
+## Nested class
+
+클래스 안에 클래스가 들어갈 수 있는데 이를 Nested 클래스라 부른다. Nested 클래스의 종류는 다음과 같다.
+
+```
+- Nested Class
+	- Static Nested Class
+	- Inner Class
+		- Local Inner Class
+		- Anonymous Inner Class
+```
+
+>  static 클래스와 inner 클래스의 차이는 static의 선언 여부다.
+
+Nested 클래스를 사용하는 이유는 다음과 같다.
+
+- 한 곳에서만 사용되는 클래스를 논리적으로 묶어서 처리할 필요가 있을 때 -> static nested class
+- 캡슐화가 필요할 때. 즉, 내부 구현을 감추고 싶을 때 -> inner class
+- 소스의 가독성과 유지보수성을 높이고 싶을 때
+
+### Static Nested 클래스의 예
+
+```java
+public class University{
+    static class Student{}
+}
+```
+
+```java
+public class School {
+    static class Student{}
+}
+```
+
+> 이처럼 같은 이름을 지닌 Student 클래스더라도 소속을 명확하게 밝힐 수 있다.
+
+객체를 생성하기 위해 다음과 같이 사용할 수 있다.
+
+```java
+public void makeStudent(){
+    University.Student student = new University.Student();
+}
+```
+
+### 테스트
