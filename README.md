@@ -22,6 +22,15 @@ javac c/cc/Car.java
 java c/cc/Car
 ```
 
+한글이 입력되어 인코딩 에러가 발생했을 땐 뒤에 -encoding UTF-8 옵션을 적자
+
+```bash
+javac CLASSNAME.java -encoding UTF-8
+java CLASSNAME
+```
+
+
+
 
 
 ## 자바 기본 구조
