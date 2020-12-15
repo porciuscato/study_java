@@ -660,4 +660,112 @@ public void makeStudent(){
 }
 ```
 
-### 테스트
+### Inner 클래스의 예
+
+```java
+public class OuterOfInner {
+    class Inner {
+        private int value = 0;
+        public int getValue() {
+            return value;
+        }
+        public void setValue(int value) {
+            this.value = value;
+        }
+    }
+}
+```
+
+```java
+public class InnerSample {
+    public static void main(String[] args) {
+        InnerSample sample = new InnerSample();
+        sample.makeInnerObject();
+    }
+    public void makeInnerObject(){
+        OuterOfInner outer = new OuterOfInner();
+        OuterOfInner.Inner inner = outer.new Inner();
+        inner.setValue(3);
+        System.out.println(inner.getValue());
+    }
+}
+```
+
+> 보면 객체 생성에 있어 Static Nested 클래스와 차이를 보인다. 이러한 inner 클래스는 캡슐화를 위해 주로 쓰인다. 특히 GUI 등의 개발을 할 때, 이벤트 리스너를 처리하기 위해 따로 별도 클래스를 만드는 것보다 이처럼 내부 클래스를 만드는 것이 훨씬 편하다.
+>
+> 그리고 이보다 더 간단한 방법으로 `익명 클래스`가 있다.
+
+### 익명 클래스
+
+```java
+public void setButtonListenerAnonymous() {
+    MagicButton button = new MagicButton();
+    button.setListener(new EventListener(){
+        public void onClick(){
+            System.out.println("Magic Button Clicked!!!");
+        }
+    });
+}
+```
+
+이처럼 생성자를 호출한 후 바로 중괄호를 열어 내부 메소드를 구현하는 방법으로 익명 클래스를 만들 수 있다. 하지만 이는 재사용이 불가능하기 때문에, 재사용을 위해선 다음과 같이 생성하면 된다.
+
+```java
+public void setButtonListenerAnonymousObject() {
+    MagicButton button = new MagicButton();
+    EventListener listener = new EventListener(){
+        public void onClick(){
+            System.out.println("Magic Button Clicked!!!");
+        }
+    };
+    button.setListener(listener);
+    button.onClickProcess();
+}
+```
+
+> 이러한 익명 클래스는 특정한 장점을 지닌다. 클래스를 만들면 이들은 메모리에 올라가는데 클래스를 많이 만들수록 많은 메모리를 요구하고 앱 시작에는 더 많은 시간이 소요된다. 따라서 이처럼 객체를 생성하면 시작 시간을 줄일 수 있다.
+
+이같은 익명 클래스나 내부 클래스는 모두 다른 클래스에서 재사용하지 않을 경우에만 만들어야 한다.
+
+### Nested 클래스의 특징
+
+```java
+public class NestedValueReference {
+    public int publicInt = 0;
+    protected int protectedInt = 1;
+    int justInt = 2;
+    private int privateInt = 3;
+    static int staticInt = 4;
+    
+    static class StaticNested{
+        public void setValue() {
+            staticInt = 14;
+        }
+    }
+    class Inner {
+        public void setValue() {
+            publicInt = 20;
+            protectedInt = 21;
+            justInt = 22;
+            privateInt = 23;
+            staticInt = 24;
+        }
+    }
+    public void setValue() {
+        EventListener instener = new EventListener() {
+            public void onClick() {
+                publicInt = 30;
+                protectedInt = 31;
+                justInt = 32;
+                privateInt = 33;
+                staticInt = 34;
+            }
+        };
+    }
+}
+
+```
+
+> Nested 클래스는 감싸고 있는 클래스의 static 변수만 참조할 수 있다. 반면 inner 클래스는 어떤 변수라도 참조할 수 있다.
+>
+> 반대로 감싸고 있는 클래스는 Nested 클래스와 inner 클래스의 모든 변수를 참조할 수 있다. private일지라도 말이다.
