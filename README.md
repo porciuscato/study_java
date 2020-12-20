@@ -790,3 +790,30 @@ public class NestedValueReference {
   - 경고를 억제한다. 속성값을 전달할 수 있다.
 
 > 후에 자바의 신 17장을 다시 읽어보자
+
+## java.lang 패키지
+
+> 유일하게 import를 안해도 사용할 수 있는 패키지
+
+```java
+public void numberTypeCheck() {
+    String value1 = "3";
+    String value2 = "5";
+    byte byte1 = Byte.parseByte(value1);  // parse이름 은 기본 자료형은 반환
+    byte byte2 = Byte.parseByte(value2);
+    System.out.println(byte1 + byte2);  // 8
+
+    Integer refInt1 = Integer.valueOf(value1);  // valueOf는 참조 자료형을 반환
+    Integer refInt2 = Integer.valueOf(value2);
+    System.out.println(refInt1 + refInt2 + "7");  // 87
+}
+
+```
+
+- 참조자료형 중 Byte, Short, Integer, Long, Float, Double 타입들은 필요시 기본 자료형처럼 사용할 수 있다. 즉 다음과 같이도 사용할 수 있다.
+
+  ```java
+  Integer refInt;
+  refInt = 100;
+  ```
+
