@@ -5,6 +5,7 @@ public class JavaLangNumber {
         JavaLangNumber sample = new JavaLangNumber();
         // sample.numberTypeCheck();
         sample.integerMinMaxCheckBinary();
+
     }
     public void numberTypeCheck() {
         String value1 = "3";
@@ -22,5 +23,15 @@ public class JavaLangNumber {
         System.out.println("Integer Binary max = " + Integer.toBinaryString(Integer.MAX_VALUE));
         System.out.println("Integer Hexa max = " + Integer.toHexString(Integer.MAX_VALUE));
         System.out.println("Integer Octal max = " + Integer.toOctalString(Integer.MAX_VALUE));
+    }
+
+    public void numberMinMaxCheck() {
+        System.out.println("Byte min=" + Byte.MIN_VALUE + " max="+Byte.MAX_VALUE);
+        System.out.println("Short min=" + Short.MIN_VALUE + " max="+Short.MAX_VALUE);
+        System.out.println("Integer min=" + Integer.MIN_VALUE + " max="+Integer.MAX_VALUE);
+        System.out.println("Long min=" + Long.MIN_VALUE + " max="+Long.MAX_VALUE);
+        System.out.println("Float min=" + Float.MIN_VALUE + " max="+Float.MAX_VALUE);
+        System.out.println("Double min=" + Double.MIN_VALUE + " max="+Double.MAX_VALUE);
+        System.out.println("Character min=" + (int)Character.MIN_VALUE + " max=" + (int)Character.MAX_VALUE);
     }
 }
