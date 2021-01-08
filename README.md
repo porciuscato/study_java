@@ -822,4 +822,110 @@ public void numberTypeCheck() {
     - 제네릭과 같이 기본 자료형을 사용하지 않는 기능을 사용하기 위해
     - MIN_VALUE나 MAX_VALUE와 같이 클래스에 선언된 상수 값을 사용하기 위해서
     - 문자열을 숫자로, 숫자를 문자열로 쉽게 변환하고 2, 8, 10, 16진수 변환을 쉽게 하기 위해
-  - 
+
+
+
+## Generic
+
+제네릭을 사용하면 다음 클래스를 사용할 때마다 형변환을 해줘야 한다.
+
+```java
+public class CastingDTO {
+    private Object object;
+    public void setObject(Object object) {
+        this.object = object;
+    }
+    public Object getObject() {
+        return object;
+    }
+}
+```
+
+```java
+public class GenericSample {
+    public void checkCastingDTO() {
+        CastingDTO dto1 = new CastingDTO();
+        dto1.setObject(new String());
+        String temp1 = (Stirng)dto1.getObject();  // 형변환을 해줘야 한다.
+    }
+}  
+```
+
+제네릭을 사용하면 형변환을 하지 않아도, 잘못된 클래스가 할당되면 에러를 발생시킨다.
+
+```java
+public class CastingGenericDTO<T> implements Serializable {
+    private T object;
+    public void setObject(T obj) {
+        this.object = obj;
+    }
+    public T getObject() {
+        return object;
+    }
+}
+```
+
+```java
+public class GenericSample {
+    public void checkGenericDTO() {
+        CastingGenericDTO<String> dto1 = new CastingGenericDTO<String>();
+        dto1.setObject(new String());
+        String temp1 = dto1.getObject();
+    }
+}
+```
+
+### 제네릭 코드의 명명 규칙
+
+- E: 요소
+- K: 키
+- N: 숫자
+- T: 타입
+- V: 값
+- S, U, V: 두, 세, 네 번째 선언된 타입
+
+이 규칙을 따르지 않아도 컴파일에는 문제 없으나 다른 사람이 보기 쉽게 하기 위해 이를 따르도록 하자.
+
+
+
+### 와일드카드 타입
+
+```java
+public void wildCardStringMethod(WildCardGeneric<String> c) {
+    String value = c.getWildCard();
+    System.out.println(value);
+}
+```
+
+위의 코드는 매개변수로서 String만 받을 수 있다. 제네릭하게 바꾸기 위해 ? 타입을 사용하자.
+
+```java
+public void wildCardStringMethod(WildCardGeneric<?> c) {
+    Object value = c.getWildCard();  // ?이 아닌 Obejct로 타입을 선언했다. 타입 확인이 필요하다면 instanceof를 사용하자.
+   	System.out.println(value);
+}
+```
+
+wildcard는 매개변수로만 사용하는 것이 좋다.
+
+다음과 같이 사용하면 컴파일이 되지 않는다.
+
+```java
+WildCardGeneric<?> wildcard = new wildCardGeneric<String>();
+```
+
+> 알 수 없는 타입에 String을 할당할 수 없기 때문이다.
+
+#### 와일드카드의 타입을 제한 - Bounded Wildcards
+
+위에서는 `?`을 사용했는데, 특정 클래스들만 오도록 하기 위해 `? extends 타입` 을 사용할 수 있다.
+
+> 가령 Bus 클래스가 Car 클래스를 상속하고, Truck 클래스도 Car 클래스를 상속한다면 Car, Bus와 Truck 클래스 만이 사용가능하도록 만들 수 있다.
+>
+> ```java
+> public void wildCardMethod(wildCard<? extends Car> c) {
+>     Car value = getWildCard();
+> }
+> ```
+
+이러한 타입을 `Bounded Wildcards`라 한다.
