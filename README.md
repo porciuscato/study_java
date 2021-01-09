@@ -929,3 +929,49 @@ WildCardGeneric<?> wildcard = new wildCardGeneric<String>();
 > ```
 
 이러한 타입을 `Bounded Wildcards`라 한다.
+
+## ArrayList
+
+```java
+import java.util.ArrayList;  // java.lang 패키지만이 import 하지 않고 사용할 수 있다.
+
+public class ListSample {
+    public void checkArrayList1() {
+        ArrayList<String> list1 = new ArrayList<>();
+        ArrayList<String> list2 = new ArrayList<>(100);  // 매개변수를 넣지 않으면 초기 ArrayList의 사이즈는 10인데, 데이터를 추가할 때마다 사이즈를 늘린다. 이는 성능에 영향을 끼치므로 데이터 크기가 예측가능하다면 크기를 지정하자.
+    }
+}
+```
+
+```java
+public void checkArrayList3() {
+    ArrayList<String> list = new ArrayList<String>();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    list.add("D");
+    list.add("E");
+    ArrayList<String> list2 = new ArrayList<String>();
+    // ArrayList<String> list2 = new ArrayList<String>(list);  // 선언할 때 list를 복사한 채 생성할 수 있다.
+    list2.add("0");
+    list2.addAll(list);  // list를 list2 뒤에 붙인다.
+    for(String ele: list2) {
+        System.out.print(ele + " ");
+    }
+```
+
+> 위 코드는 DeepCopy다.
+
+```java
+public void checkArrayList4() {
+    ArrayList<String> list = new ArrayList<>();
+    list.add("A");
+    list.add("B");
+    ArrayList<String> list2 = list;
+    list.add("C");
+    for(String ele: list2){
+        System.out.print(ele + " ");
+    }
+    // Shallow Copy가 되어 list의 모든 원소가 출력된다.
+```
+
