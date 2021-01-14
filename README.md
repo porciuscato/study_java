@@ -930,6 +930,18 @@ WildCardGeneric<?> wildcard = new wildCardGeneric<String>();
 
 이러한 타입을 `Bounded Wildcards`라 한다.
 
+### super vs extends
+
+```java
+<? extends T>
+<? super T>
+// 둘의 차이는?
+```
+
+[링크](https://stackoverflow.com/questions/4343202/difference-between-super-t-and-extends-t-in-java#answer-33246935)
+
+extends는 클래스 T를 상속하는 모든 클래스들을 지칭한다. super는 클래스 T가 상속했던 클래스들을 의미한다.
+
 ## ArrayList
 
 ```java
