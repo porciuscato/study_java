@@ -987,3 +987,30 @@ public void checkArrayList4() {
     // Shallow Copy가 되어 list의 모든 원소가 출력된다.
 ```
 
+## transient
+
+serialize할 때 데이터를 전달하지 않기 위해 사용한다. 다음과 같이 사용할 수 있다. ([참고](https://nesoy.github.io/articles/2018-06/Java-transient))
+
+```java
+class Member implements Serializable {
+    private transient String name;
+    private String email;
+    private int age;
+    public Member(String name, String email, int age){
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
+    @Override
+    public String toString(){
+        return String.format("Member{name='%s', email='%s', age='%d'}", name, email, age);
+    }
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Member member = new Memeber("name", "email", 25);
+        String serialData = serializeTest(member);
+        deSerializeTest(serialData);
+    }
+}
+```
+
+Serialize를 하게 되면 transient라 선언한 변수는 name 필드가 표시는 되지만 그 값은 null이다.
