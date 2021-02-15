@@ -29,7 +29,81 @@ javac CLASSNAME.java -encoding UTF-8
 java CLASSNAME
 ```
 
+## 자바 매크로
 
+**JAVA Robot** - http://docs.oracle.com/javase/7/docs/api/java/awt/Robot.html 
+
+자바 공식지원 매크로 도구.
+
+화면캡쳐, 키보드누르기, 마우스 움직이고 클릭 등등 매크로에 필요한 기능을 전부 제공한다.
+
+**Tasklist** - http://technet.microsoft.com/en-us/library/bb491010.aspx 
+
+프로세스 정보를 출력하는 콘솔 명령어
+
+XP이후부터 등장한 이녀석을 이용하면 간단한 프로세스 정보를 얻어올 수 있다. 자바의 콘솔실행 기능을 이용하면
+
+new ProcessBuilder("tasklist", "/FI", "\"IMAGENAME eq calc.exe\"").start(); 이런식으로 해서 계산기가 실행중인지 여부를 판단이 가능
+
+**NirCmd** - http://www.nirsoft.net/utils/nircmd.html 
+
+콘솔명령어 도구.
+
+마우스/키보드누른효과, 모니터 끄기/켜기, Alt-Tab기능, 딴창크기조절, CD-ROM열기 등등등 컴퓨터로 할 수 있는 거의 모든 기능을
+
+콘솔명령어로 실행할 수 있게 해주는 녀석. 그러니까 콘솔창에서 "nircmd sendkeypress Shift+n" 이렇게 쳐주면
+
+진짜로 키보드의 쉬프트+N키를 누른 효과가 나오는 녀석...
+
+한마디로 자바에서 new ProcessBuilder("nircmd.exe", "win", "activate", "calc.exe").start(); 이런식으로 계산기 창을 최상위로
+
+올린다던가 하는 상세한 제어를 할 수 있게 된다.
+
+**Open CV for JAVA** - http://opencv.org/ 
+
+유명한 이미지 처리기.
+
+얼마전부터 정식으로 자바를 지원하기 시작해서 고도의 이미지 처리를 자바에서 자유자재로 할 수 있게 되었다.
+
+덕분에 Imgproc.matchTemplate(img1, img2, img3, Imgproc.TM_CCOEFF_NORMED); 요렇게 한줄만 해줘도
+
+이미지가 엄청난 속도로 패턴검색이 되어 미리 저장해둔 패턴이 현재 화면에 존재하는지, 그리고 위치가 어딘지까지 찾아올 수있다.
+
+즉 특정버튼을 미리 캡쳐해 놨다가 자동으로 클릭하는 기능같은것도 순식간에 만들수 있다는 이야기.
+
+**JNativeHook** - https://github.com/kwhat/jnativehook 
+
+자바 글로벌 후킹 도구.
+
+시스템 자체를 후킹해서 사용자가 입력하는 모든 키보드, 마우스이동, 클릭좌표 등의 정보를 자바로 가져올 수 있게 해준다.
+
+자바커에게 익숙한 이벤트 방식으로 동작하기에 아주 편하게 쓸 수 있다.
+
+**그외 기타 꼼수들**
+
+클립보드
+
+Toolkit.getDefaultToolkit().getSystemClipboard();
+
+이런식으로 하면 현재 클립보드에 복사되어 있는 내용을 자바로 가져올 수 있다.
+
+현재 커서 위치의 문자열을 자바로 읽어오기 귀찮을땐, Robot으로 강제로 Ctrl+C를 누른 효과를 줘버리고 클립보드에서 가져오면 편하다.
+
+기본 프로그램 실행
+
+Desktop.getDesktop().open(new File("abcd.xls"));
+
+이런식으로 해주면 그냥 알아서 엑셀이 실행된다. 설치 여부를 검사하거나 Programs Files뒤질 필요없이 해당 파일에 연결된
+
+시스템 기본 프로그램이 그냥 알아서 실행된다.
+
+기본 브라우져로 URL열기
+
+Desktop.getDesktop().browse(new URI("http://www.naver.com"));
+
+이런식으로 해주면 시스템 기본 브라우져가 알아서 실행되며 지정한 페이지가 열린다.
+
+매크로상 외부와 통신해야 한다면 귀찮게 소켓통신이나 DB연결 할 필요없이 웹기반으로 통신하면 편하다.
 
 
 

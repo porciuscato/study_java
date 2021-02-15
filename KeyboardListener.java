@@ -1,6 +1,7 @@
-import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
 import java.util.ArrayList;
 
 public class KeyboardListener implements KeyListener {
