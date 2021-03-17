@@ -159,6 +159,27 @@ public class StrucOfJava{
 - 기타: boolean
 ```
 
+
+
+## 기본 자료형의 클래스화
+
+int 타입은 기본타입이지만 Integer 클래스로 정수를 생성할 수 있다.
+
+```java
+// Integer num = new Integer(5); 이건 사용하지 않는다.
+Integer num = Integer.valueOf(5);
+```
+
+```java
+Integer a1 = 3;
+Integer a2 = Integer.valueOf(3);
+a1.equals(a2); // true
+```
+
+
+
+
+
 ## StringBuffer
 
 String보다 좋은 성능을 보이는 문자열 처리 방법이다.
@@ -175,7 +196,7 @@ StringBuffer의 Append는 string의 + 혹은 concat보다 월등히 빠르다.
 
 [노션](https://www.notion.so/hiawath/StringBuffer-39850d0d3fc9426881b79130a554b32f)
 
-
+[스트링과 스트링버퍼 ]
 
 ## 배열
 
