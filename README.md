@@ -159,6 +159,24 @@ public class StrucOfJava{
 - 기타: boolean
 ```
 
+## StringBuffer
+
+String보다 좋은 성능을 보이는 문자열 처리 방법이다.
+
+String 객체를 생성할 때 double quotation mark를 사용하면 리터럴 방식으로 데이터를 다룬다. 즉, string pool 안에 특정한 값이 이미 존재한다면 객체를 새로 생성하지 않고 기존 풀에 있는 데이터를 가리킨다. 반면 new를 사용하면 매번 객체를 새로 생성한다.
+
+
+
+StringBuffer의 Append는 string의 + 혹은 concat보다 월등히 빠르다.
+
+[참고1](https://velog.io/@ahnick/Java-String-StringBuffer-StringBuilder)
+
+[참고2](http://blog.naver.com/PostView.nhn?blogId=bestheroz&logNo=220264919757)
+
+[노션](https://www.notion.so/hiawath/StringBuffer-39850d0d3fc9426881b79130a554b32f)
+
+
+
 ## 배열
 
 - 배열의 기본값
